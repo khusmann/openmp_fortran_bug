@@ -1,0 +1,9 @@
+I don't understand it enough to know if this is a deep problem, but I have something you should be able to reproduce.
+
+There are three conditions that together create the memory problems:
+
+1) Compiling the fortran routines with `-fopenmp` in FFLAGS
+2) The fortran routine allocates a very large var onto the stack and
+3) Calls another fortran routine and passes that very large var to it.
+
+If you change any one of these three things, the read errors go away. 
